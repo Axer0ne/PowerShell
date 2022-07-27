@@ -1,0 +1,9 @@
+#Lists all bindings on IIS server by their respective sites
+Get-WebBinding | % {
+    $name = $_.ItemXPath -replace '(?:.*?)name=''([^'']*)(?:.*)', '$1'
+    New-Object psobject -Property @{
+        Name = $name
+        Binding = $_.bindinginformation.Split(":")[-1]
+    }
+} | Group-Object -Property Name | 
+Format-Table Name, @{n="Bindings";e={$_.Group.Binding -join "`n"}} -Wrap
