@@ -6,7 +6,7 @@ $logpath = "C:\system\logs"
 $logfile = "$logpath\disableComputersRemoveGroups_$logDate.txt"
 
 # Set the target OU's distinguished name
-$ouDN = "OU=OU,OU=OU,DC=domain,DC=com" 
+$ouDN = "OU=Obsolete,OU=Workstations,DC=domain,DC=com" 
 
 # Get all enabled computers in the target OU
 $enabledComputers = Get-ADComputer -Filter "Enabled -eq 'True'" -SearchBase $ouDN -Properties *
@@ -33,8 +33,8 @@ foreach ($computer in $computersObsolete){
 Add-Content $logfile "Groups except 'Domain computers' removed for all computer objects in Obsolete OU"
 
 #Send E-Mail
-    $smtpServer = "smtp.server.com"
-    $emailTo = "group@domain.com"
+    $smtpServer = "server.domain.com"
+    $emailTo = "email@domain.com"
     $emailFrom = $env:computername + "@domain.com"
     $emailSubject = "Disabled computers & removed groups"
     $mailBody = 

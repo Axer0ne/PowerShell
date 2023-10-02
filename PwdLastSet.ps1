@@ -1,4 +1,4 @@
-$UserAccount = 'firstname.lastname'
+$UserAccount = 'first.last'
 $LastSet = get-aduser $UserAccount -properties * | Select-Object -Expand passwordlastset
 
 $Today = Get-Date
