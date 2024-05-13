@@ -32,7 +32,7 @@ Function CheckEmptyGroups {
         $emptyGroups
     }
     catch {
-        Write-Host "An error occurred while checking for groups in AD: $_" -ForegroundColor Red
+        Write-Host "An error occurred while checking for groups in Entra: $_" -ForegroundColor Red
     }
 }
 
